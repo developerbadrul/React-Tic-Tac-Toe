@@ -1,11 +1,12 @@
 
 import './App.css'
+import Board from './components/Board'
 
 function App() {
 
   return (
     <>
-      <p className='text-3xl'>this is my app</p>
+      <Board />
     </>
   )
 }
