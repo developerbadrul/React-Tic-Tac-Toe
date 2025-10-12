@@ -28,7 +28,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
 
     return (
         <div>
-            <div>{status}</div>
+            <div className="font-bold text-blue-500 text-2xl">{status}</div>
             <div className="flex">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
                 <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
