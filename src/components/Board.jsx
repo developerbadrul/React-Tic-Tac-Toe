@@ -13,7 +13,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
     }
 
     function handleClick(i) {
-        if (squares[i] ) {
+        if (squares[i] || calculateWinner(squares)) {
             return;
         };
 
