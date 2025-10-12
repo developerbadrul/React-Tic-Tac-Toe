@@ -11,7 +11,7 @@ export default function Board() {
     if (winner) {
         status = `Winner: ${winner}`
     } else {
-        status = 'Next Player ' + (xIsNext ? 'O' : 'X')
+        status = 'Next Player ' + (xIsNext ? 'X' : 'O')
     }
 
     function handleClick(i) {
