@@ -8,6 +8,7 @@ const Game = () => {
 
     const currentSquares = history[currentMove];
 
+
     function handlePlay(nextSquare) {
         setXIsNext(prev => !prev);
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquare];
@@ -19,11 +20,13 @@ const Game = () => {
     function jumpTo(move) {
         setCurrentMove(move);
         setXIsNext(move % 2 === 0);
+
         console.log('CurrentMove :', currentMove);
     }
 
     const moves = history.map((squares, move) => {
         let description;
+        const isActive = move === currentMove;
 
         if (move > 0) {
             description = `Go to move # ${move}`;
@@ -32,14 +35,15 @@ const Game = () => {
         }
 
         return (
+
             <li key={move}>
-                <button onClick={() => jumpTo(move)}>{description}</button>
+                <button className={`bg-lime-300 m-1 p-2 border-r-2 ${isActive ? 'border-red-600' : ''}`} onClick={() => jumpTo(move)}>{description}</button>
             </li>
         )
     })
 
     return (
-        <div>
+        <div className="flex justify-center p-8 gap-8 ">
             <div>
                 <Board
                     xIsNext={xIsNext}
