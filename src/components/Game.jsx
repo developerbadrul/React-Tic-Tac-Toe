@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Board from "./Board";
+import History from "./History";
 
 const Game = () => {
     const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -7,7 +8,6 @@ const Game = () => {
     const [currentMove, setCurrentMove] = useState(0);
 
     const currentSquares = history[currentMove];
-
 
     function handlePlay(nextSquare) {
         setXIsNext(prev => !prev);
@@ -24,24 +24,6 @@ const Game = () => {
         console.log('CurrentMove :', currentMove);
     }
 
-    const moves = history.map((squares, move) => {
-        let description;
-        const isActive = move === currentMove;
-
-        if (move > 0) {
-            description = `Go to move # ${move}`;
-        } else {
-            description = `Go to Start the Game`
-        }
-
-        return (
-
-            <li key={move}>
-                <button className={`bg-lime-300 m-1 p-2 border-r-2 ${isActive ? 'border-red-600' : ''}`} onClick={() => jumpTo(move)}>{description}</button>
-            </li>
-        )
-    })
-
     return (
         <div className="flex justify-center p-8 gap-8 ">
             <div>
@@ -53,7 +35,11 @@ const Game = () => {
             </div>
             <div>
                 <ol>
-                    {moves}
+                    <History
+                        jumpTo={jumpTo}
+                        currentMove={currentMove}
+                        history={history}
+                    />
                 </ol>
             </div>
         </div>
